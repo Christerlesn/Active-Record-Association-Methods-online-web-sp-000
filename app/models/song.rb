@@ -8,11 +8,12 @@ class Song < ActiveRecord::Base
 
   def drake_made_this
     new_song = Song.new
-    if !drake.exists?
-      drake = Artist.new(name:"Drake")
+    if drake.exist?
+      drake.songs << new_song
     else
+      drake = Artist.new(name:"Drake")
+      drake.songs << new_song
     end
-    drake.songs << new_song
     new_song.artist = drake
     new_song.save
     # when this method is called it should assign the song's artist to Drake
