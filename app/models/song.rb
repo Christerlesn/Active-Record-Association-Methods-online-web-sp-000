@@ -8,11 +8,11 @@ class Song < ActiveRecord::Base
 
   def drake_made_this
     new_song = Song.new
-    if drake.exist?
+    if drake.class == Artist
       drake.songs << new_song
     else
-      drake = Artist.new(name:"Drake")
-      drake.songs << new_song
+    drake = Artist.new(name:"Drake")
+    drake.songs << new_song
     end
     new_song.artist = drake
     new_song.save
