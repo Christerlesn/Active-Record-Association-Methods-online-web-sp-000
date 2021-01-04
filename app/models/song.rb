@@ -7,7 +7,7 @@ class Song < ActiveRecord::Base
   end
 
   def drake_made_this
-    new_song = Song.new(name:)
+    new_song = Song.new
     if !drake.exists?
       drake = Artist.new(name:"Drake")
     else
